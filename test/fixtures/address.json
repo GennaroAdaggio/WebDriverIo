@@ -1,0 +1,10 @@
+{
+    "address": {
+        "country": "IT",
+        "postalCode": "00100",
+        "houseNumber": "42",
+        "street": "Via Roma",
+        "city": "Roma",
+        "state": "Lazio"
+    }
+}
