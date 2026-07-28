@@ -6,15 +6,16 @@ describe("Logout", () => {
 
     beforeEach(async () => {
         await browser.deleteCookies();
+        await loginAs(users.firstUser);
     });
 
     it("Logout success", async () => {
 
-        await loginAs(users.firstUser);
 
         await HeaderComponent.menu();
         await HeaderComponent.signout();
 
+        await expect($('[data-test="nav-sign-in"]')).toBeDisplayed();
     });
 
 });
