@@ -130,10 +130,12 @@ export const config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [
         'spec',
-        ['allure', {
-            outputDir: 'allure-results',
-            disableWebdriverStepsReporting: true,
-            disableWebdriverScreenshotsReporting: false,
+        ['mochawesome', {
+            outputDir: './reports',
+            outputFilename: 'report',
+            overwrite: true,
+            saveHtml: false,
+            saveJson: true
         }]
     ],
 

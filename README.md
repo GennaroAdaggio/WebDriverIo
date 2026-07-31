@@ -211,44 +211,33 @@ npm test
 ## Generazione del report
 
 ```bash
+npm test
 npm run report
 ```
 
-Il report Allure si aprirà automaticamente nel browser con il riepilogo di tutti i test eseguiti, inclusi screenshot per i test falliti.
+`npm test` esegue tutti i test e genera i file di log nella cartella `reports`. `npm run report` combina i log in un unico file JSON e genera il report HTML finale.
+
+Il report viene creato come file `reports/report.html` — un singolo file HTML autocontenuto che può essere:
+
+- Aperto direttamente nel browser senza bisogno di un server
+- Zippato e mandato via email
+- Caricato su Teams, Drive, SharePoint o qualsiasi altro strumento
+
+Non serve nessuna configurazione aggiuntiva per aprirlo — basta trascinarlo nel browser.
 
 ---
 
-## Condivisione del report tramite GitHub Pages
+## Dipendenze per il report
 
-Per rendere il report Allure accessibile pubblicamente tramite un link senza dover aprire nulla in locale, è possibile pubblicarlo su GitHub Pages.
+Le dipendenze necessarie per generare il report sono già incluse nel `package.json` e vengono installate automaticamente con `npm install`:
 
-**1. Aggiorna lo script nel `package.json`**
+- `wdio-mochawesome-reporter` — reporter che genera i file di log durante l'esecuzione dei test
+- `mochawesome-merge` — combina i file di log in un unico JSON
+- `mochawesome-report-generator` — genera il file HTML dal JSON
 
-```json
-"report": "allure generate allure-results --clean -o docs && allure open docs"
-```
+---
 
-Il flag `-o docs` indica ad Allure di generare il report nella cartella `docs` invece della cartella di default. La cartella `docs` è quella che GitHub Pages riconosce automaticamente per pubblicare il sito statico — per questo motivo è stata scelta come destinazione.
 
-**2. Pusha il progetto su GitHub**
-
-```bash
-git init
-git add .
-git commit -m "first commit"
-git remote add origin https://github.com/GennaroAdaggio/WebDriverIo
-git push -u origin master
-```
-
-In questo modo il progetto completo, inclusa la cartella `docs` con il report generato, viene caricato sul repository GitHub.
-
-**3. Attiva GitHub Pages**
-
-Nelle impostazioni del repository su GitHub, nella sezione Settings → Pages, si seleziona il branch `master` e la cartella `/docs` come sorgente. GitHub Pages legge il contenuto di quella cartella e lo pubblica come sito web statico accessibile tramite URL pubblico.
-
-**4. Risultato**
-
-Dopo qualche minuto GitHub Pages pubblica il report e lo rende accessibile a chiunque abbia il link, senza che l'utente debba installare nulla, aprire file in locale o avere Node.js installato. È sufficiente aprire il browser e visitare l'URL fornito da GitHub.
 
 ---
 
