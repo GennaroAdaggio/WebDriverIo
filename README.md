@@ -215,25 +215,15 @@ npm test
 npm run report
 ```
 
-`npm test` esegue tutti i test e genera i file di log nella cartella `reports`. `npm run report` combina i log in un unico file JSON e genera il report HTML finale.
+`npm test` esegue tutti i test e genera i dati grezzi nella cartella `allure-results`. `npm run report` genera il report HTML nella cartella `allure-report` e lo apre automaticamente nel browser.
 
-Il report viene creato come file `reports/report.html` — un singolo file HTML autocontenuto che può essere:
+Il flag `--single-file` fa sì che Allure generi un unico file HTML autocontenuto nella cartella `allure-report`, che può essere:
 
 - Aperto direttamente nel browser senza bisogno di un server
 - Zippato e mandato via email
 - Caricato su Teams, Drive, SharePoint o qualsiasi altro strumento
 
 Non serve nessuna configurazione aggiuntiva per aprirlo — basta trascinarlo nel browser.
-
----
-
-## Dipendenze per il report
-
-Le dipendenze necessarie per generare il report sono già incluse nel `package.json` e vengono installate automaticamente con `npm install`:
-
-- `wdio-mochawesome-reporter` — reporter che genera i file di log durante l'esecuzione dei test
-- `mochawesome-merge` — combina i file di log in un unico JSON
-- `mochawesome-report-generator` — genera il file HTML dal JSON
 
 ---
 
