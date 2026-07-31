@@ -8,13 +8,13 @@ describe('Search', () => {
 
     it('Search for Pliers shows only matching products', async () => {
 
-
         await SearchPage.search('Pliers');
 
         const products = await SearchPage.productNames;
+        const count = products.length;
 
-        for (const product of products) {
-            await expect(product).toHaveText(expect.stringContaining('Pliers'));
+        for (let i = 0; i < count; i++) {
+            await expect(products[i]).toHaveText(expect.stringContaining('Pliers'));
         }
 
     });

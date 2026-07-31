@@ -14,6 +14,6 @@
   },
   "scripts": {
     "test": "wdio run wdio.conf.js",
-    "report": "mochawesome-merge reports/*.log > reports/report.json && marge reports/report.json --reportDir reports --inline"
+    "report": "allure generate allure-results --clean --single-file && allure open"
   }
 }

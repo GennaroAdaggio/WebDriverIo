@@ -21,12 +21,7 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        //'./test/specs/**/*.js'
-        //'./test/specs/**/logout.js'
-        //'./test/specs/**/sort.js'
-        //'./test/specs/**/cart.js'
-        //'./test/specs/**/checkout.js'
-        './test/specs/**/product.js'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -130,12 +125,10 @@ export const config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [
         'spec',
-        ['mochawesome', {
-            outputDir: './reports',
-            outputFilename: 'report',
-            overwrite: true,
-            saveHtml: false,
-            saveJson: true
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
         }]
     ],
 
